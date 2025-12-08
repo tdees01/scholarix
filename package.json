@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "scholarship website",
   "main": "index.js",
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
+  },
   "dependencies": {
     "abbrev": "^1.1.1",
     "accepts": "^2.0.0",
