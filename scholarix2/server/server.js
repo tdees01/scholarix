@@ -105,7 +105,7 @@ app.post('/api/profile', async (req, res) => {
       classification
     } = req.body;
 
-    console.log('Received profile data:', req.body); // Debug log
+    console.log('Received profile data:', req.body);
 
     if (!id || !name) {
       return res.status(400).json({ success: false, message: 'id and name are required.' });
@@ -121,7 +121,7 @@ app.post('/api/profile', async (req, res) => {
       classification
     };
 
-    console.log('Inserting into database:', profileData); // Debug log
+    console.log('Inserting into database:', profileData);
 
     const { data, error } = await supabase
       .from('profile')
@@ -130,11 +130,11 @@ app.post('/api/profile', async (req, res) => {
       .single();
 
     if (error) {
-      console.error('Supabase error:', error); // More detailed error log
+      console.error('Supabase error:', error);
       throw error;
     }
 
-    console.log('Profile saved successfully:', data); // Success log
+    console.log('Profile saved successfully:', data); 
     res.json({ success: true, message: 'Profile saved', profile: data });
   } catch (err) {
     console.error('Profile upsert error:', err);
@@ -162,7 +162,7 @@ app.get('/api/profile/:id', async (req, res) => {
 // app.get('*', (req, res) => {
 //     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 // });
-
+//scholarship endpoint
 app.get('/api/scholarships', async (req, res) => {
   try {
     const { data, error } = await supabase

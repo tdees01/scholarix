@@ -28,10 +28,8 @@ function App() {
 
     const [creationDate, setCreationDate] = useState('');
     const [user, setUser] = useState(null);
-    // NEW: Track if profile has been created
     const [profileCreated, setProfileCreated] = useState(false);
 
-    // NEW: Store profile data
     const [profileData, setProfileData] = useState({
         major: '',
         gpa: '',

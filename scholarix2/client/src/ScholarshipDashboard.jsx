@@ -11,13 +11,13 @@ const ScholarshipDashboard = ({ name, major, gpa, gradYear, classification, sele
   const fetchScholarships = async () => {
     try {
       const response = await fetch('http://localhost:5001/api/scholarships');
-      console.log('API Response status:', response.status); // Debug log
+      console.log('API Response status:', response.status);
 
       const result = await response.json();
-      console.log('API Response data:', result); // Debug log
+      console.log('API Response data:', result);
 
       const allscholarships = result.scholarships || [];
-      console.log('All scholarships from DB:', allscholarships); // Debug log
+      console.log('All scholarships from DB:', allscholarships);
 
       //Take all the scholarships from the database (`allScholarships`)
       //  and the user's profile information (`name, major, gpa, gradYear, classification`), 
@@ -46,7 +46,6 @@ const ScholarshipDashboard = ({ name, major, gpa, gradYear, classification, sele
 
   if (loading) return <div>Loading scholarships...</div>;
 
-  // Show message if no matches found
   if (matchedScholarships.length === 0) {
     return (
       <div>
@@ -57,10 +56,8 @@ const ScholarshipDashboard = ({ name, major, gpa, gradYear, classification, sele
   }
 
   function scoreScholarships(scholarships, userProfile) {
-    // Debug: Show what user profile we're matching against
     console.log('User Profile for matching:', userProfile);
 
-    // We'll check each scholarship one by one
     const scoredScholarships = scholarships.map((scholarship) => {
 
       console.log(`\n--- Checking scholarship: ${scholarship.title || scholarship.name} ---`);
@@ -71,37 +68,24 @@ const ScholarshipDashboard = ({ name, major, gpa, gradYear, classification, sele
         career_interests: scholarship.career_interests
       });
 
-      // Start with score of 0
       let score = 0;
-
-      // Assume they qualify unless we find a reason they don't
       let qualifies = true;
-
-      // Store reasons why they DON'T qualify (if any)
       let disqualificationReasons = [];
 
-      // ====== CHECK HARD REQUIREMENTS ======
-      // These are YES/NO checks - either you meet them or you don't
-
-      // 1. CHECK MAJOR REQUIREMENT
-      // If scholarship requires a specific major, user must have it
       if (scholarship.major && scholarship.major !== 'any') {
         let majorList = [];
 
-        // Check if major is stored as an array (multiple eligible majors)
+        
         if (Array.isArray(scholarship.major)) {
           majorList = scholarship.major;
         }
-        // If it's a comma-separated string, split it into an array
         else if (typeof scholarship.major === 'string' && scholarship.major.includes(',')) {
           majorList = scholarship.major.split(',').map(m => m.trim());
         }
-        // Single major string
         else {
           majorList = [scholarship.major];
         }
 
-        // Now check if user's major is in the list
         if (!majorList.includes(userProfile.major)) {
           qualifies = false;
           disqualificationReasons.push(`Requires one of: ${majorList.join(', ')}`);
@@ -113,8 +97,6 @@ const ScholarshipDashboard = ({ name, major, gpa, gradYear, classification, sele
         console.log(`No major requirement or accepts any major`);
       }
 
-      // 2. CHECK GPA REQUIREMENT
-      // If scholarship has minimum GPA, user must meet it
       if (scholarship.gpa) {
         // Convert user's GPA to number for comparison
         const userGPA = parseFloat(userProfile.gpa);
@@ -132,24 +114,17 @@ const ScholarshipDashboard = ({ name, major, gpa, gradYear, classification, sele
       }
 
       // 3. CHECK CLASS YEAR/CLASSIFICATION
-      // If scholarship is only for certain class years (Freshman, Sophomore, etc.)
       if (scholarship.classification && scholarship.classification !== 'any' && scholarship.classification !== '') {
         let classificationList = [];
-
-        // If it's stored as an array in your database:
-        if (Array.isArray(scholarship.classification)) {
-          classificationList = scholarship.classification;
-        }
         // If it's a comma-separated string, split it into an array
-        else if (typeof scholarship.classification === 'string' && scholarship.classification.includes(',')) {
+        if (typeof scholarship.classification === 'string' && scholarship.classification.includes(',')) {
           classificationList = scholarship.classification.split(',').map(c => c.trim());
         }
-        // Single classification string
         else {
           classificationList = [scholarship.classification];
         }
 
-        // Now check if user's classification is in the list
+        // check if user's classification is in the list
         if (!classificationList.includes(userProfile.classification)) {
           qualifies = false;
           disqualificationReasons.push(`Only for ${classificationList.join(', ')}`);
@@ -176,28 +151,20 @@ const ScholarshipDashboard = ({ name, major, gpa, gradYear, classification, sele
         console.log(`No career interest requirement`);
       }
 
-      // ====== CALCULATE MATCH SCORE ======
-      // Only calculate score if they actually qualify
       if (qualifies) {
 
-        // BONUS POINTS: Perfect major match
-        // If scholarship specifically wants your major, that's a great match!
         if (scholarship.required_major === userProfile.major) {
           score += 10;
         }
 
-        // BONUS POINTS: High GPA
-        // If your GPA is way above the minimum, you're a strong candidate
         if (scholarship.min_gpa) {
           const userGPA = parseFloat(userProfile.gpa);
           const gpaBuffer = userGPA - scholarship.min_gpa;
 
-          // If GPA is 0.5 or more above minimum, add bonus points
           if (gpaBuffer >= 0.5) {
             score += 5;
           }
 
-          // If GPA is 1.0 or more above minimum, add even more points
           if (gpaBuffer >= 1.0) {
             score += 5;
           }
@@ -235,7 +202,7 @@ const ScholarshipDashboard = ({ name, major, gpa, gradYear, classification, sele
       if (b.matchScore !== a.matchScore) {
         return b.matchScore - a.matchScore;
       }
-      // If scores are equal, sort by deadline (soonest first)
+      // If scores are equal, sort by deadline
       return new Date(a.deadline) - new Date(b.deadline);
     });
 
