@@ -4,8 +4,7 @@
   "description": "scholarship website",
   "main": "index.js",
   "engines": {
-    "node": "20.x",
-    "npm": "9.x"
+    "node": "20.x"
   },
   "dependencies": {
     "abbrev": "^1.1.1",
