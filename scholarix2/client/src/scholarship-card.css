@@ -1,0 +1,222 @@
+/* Scholarship Card */
+.scholarship-card {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+    padding-top: 30px;
+}
+
+.scholarship-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Card Header */
+.scholarship-card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.scholarship-card-title-row {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.scholarship-card-title-container {
+    flex: 1;
+}
+
+.scholarship-card-title-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+}
+
+.scholarship-card-title-inner h3 {
+    color: #111827;
+}
+
+.scholarship-card-description {
+    color: #4b5563;
+    margin-top: 0.5rem;
+}
+
+/* Match Badge */
+.match-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+}
+
+.match-badge.match-high {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.match-badge.match-good {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.match-badge.match-medium {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.match-badge.match-low {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+/* Card Body */
+.scholarship-card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.scholarship-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: #4b5563;
+}
+
+.scholarship-card-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.scholarship-card-meta-item svg {
+    height: 1rem;
+    width: 1rem;
+}
+
+.scholarship-card-meta-item.deadline-urgent {
+    color: #dc2626;
+}
+
+.scholarship-card-meta-item.deadline-soon {
+    color: #ea580c;
+}
+
+/* Winners Section */
+.scholarship-winners {
+    display: flex;
+    align-items: start;
+    gap: 0.5rem;
+    background: #faf5ff;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+}
+
+.scholarship-winners svg {
+    height: 1rem;
+    width: 1rem;
+    color: #7c3aed;
+    margin-top: 0.125rem;
+    flex-shrink: 0;
+}
+
+.scholarship-winners-content {
+    flex: 1;
+}
+
+.scholarship-winners-count {
+    color: #581c87;
+}
+
+.scholarship-winners-names {
+    color: #6b21a8;
+    margin-top: 0.25rem;
+}
+
+/* Tags */
+.scholarship-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.scholarship-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #f3f4f6;
+    color: #111827;
+    border-radius: 9999px;
+}
+
+.scholarship-tag.bordered {
+    background: transparent;
+    border: 1px solid #d1d5db;
+}
+
+/* Action Buttons */
+.scholarship-actions {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.scholarship-button {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: 500;
+}
+
+.scholarship-button svg {
+    height: 1rem;
+    width: 1rem;
+}
+
+.scholarship-button.view-details {
+    border: 1px solid #d1d5db;
+    background: white;
+    color: #111827;
+}
+
+.scholarship-button.view-details:hover {
+    background: #f9fafb;
+}
+
+.scholarship-button.view-details:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+.scholarship-button.view-details svg {
+    margin-right: 0.5rem;
+}
+
+.scholarship-button.apply-now {
+    background: #6c0994;
+    color: white;
+    border: none;
+    text-decoration: none;
+}
+
+.scholarship-button.apply-now:hover {
+    background: #6c0094;
+}
+
+.scholarship-button.apply-now:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5), 0 0 0 4px rgba(37, 99, 235, 0.25);
+}
+
+.scholarship-button.apply-now svg {
+    margin-left: 0.5rem;
+}

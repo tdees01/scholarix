@@ -1,0 +1,11 @@
+/* Minimal index.css - cleaned up to avoid conflicts */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}

@@ -1,0 +1,132 @@
+/* Profile Setup Container */
+.profile-setup-container {
+    max-width: 42rem;
+    margin: 0 auto;
+}
+
+.profile-setup-card {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.profile-setup-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-setup-header h2 {
+    color: #111827;
+}
+
+.profile-setup-header p {
+    color: #4b5563;
+    margin-top: 0.25rem;
+}
+
+.profile-setup-body {
+    padding: 1.5rem;
+}
+
+.profile-setup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Form Groups */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: #111827;
+}
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    background: white;
+}
+
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Grid Layout */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+/* Interest Tags */
+.interest-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.interest-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    background: #f3f4f6;
+    color: #111827;
+    border-radius: 9999px;
+}
+
+.interest-tag-remove {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.interest-tag-remove:hover {
+    color: #dc2626;
+}
+
+.interest-tag-remove svg {
+    height: 0.75rem;
+    width: 0.75rem;
+}
+
+/* Submit Button */
+.profile-setup-submit {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.profile-setup-submit:hover {
+    background: #1d4ed8;
+}
+
+.profile-setup-submit:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5), 0 0 0 2px rgba(37, 99, 235, 0.5);
+}
+
+.profile-setup-submit:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+}
