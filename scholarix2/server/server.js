@@ -159,13 +159,12 @@ app.get('/api/profile/:id', async (req, res) => {
 });
 
 // // Fallback route to serve React frontend for any unmatched routes
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// });
 
 // Serve static files from the React app
-const path = require('path');
-app.use(express.static(path.join(__dirname, '../client/build')));
+// app.use(express.static(path.join(__dirname, '../client/build')));
 
 //scholarship endpoint
 app.get('/api/scholarships', async (req, res) => {
